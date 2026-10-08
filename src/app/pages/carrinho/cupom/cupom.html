@@ -1,0 +1,17 @@
+<section class="cartao">
+  <h2 class="cartao__titulo cartao__titulo--icone"><span aria-hidden="true">&#127991;</span> Cupom de Parceria &amp; Desconto</h2>
+  <p class="cartao__apoio">Possui voucher do escritório ou código de parceiro?</p>
+  <form class="linha-formulario" (ngSubmit)="aplicar.emit()">
+    <label class="acessivel" for="campo-cupom">Código do cupom</label>
+    <span class="campo-cupom">
+      <input type="text" id="campo-cupom" class="campo campo--cupom" [ngModel]="codigoCupom" (ngModelChange)="codigoCupomChange.emit($event)" name="cupom">
+      <button type="button" class="campo-cupom__limpar" (click)="remover.emit()" aria-label="Remover cupom">&times;</button>
+    </span>
+    <button type="submit" class="botao botao--escuro">Aplicar</button>
+  </form>
+  <p class="mensagem" [class.mensagem--sucesso]="cupomValido" [class.mensagem--erro]="!cupomValido">{{ mensagemCupom }}</p>
+  <div class="ajuda">
+    <span class="ajuda__icone" aria-hidden="true">&#9993;</span>
+    <p class="ajuda__texto">Dúvidas sobre amostras ou medidas?<br><a class="link" href="#">Falar com Consultor Técnico</a></p>
+  </div>
+</section>

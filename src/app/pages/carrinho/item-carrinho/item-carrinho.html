@@ -1,0 +1,22 @@
+<div class="item__imagem" [style.--tom-madeira]="item.madeira">
+  <img *ngIf="item.imagem" [src]="item.imagem" [alt]="item.nome">
+  <span class="item__etiqueta">{{ etiquetaMadeira }}</span>
+</div>
+<div class="item__dados">
+  <h3 class="item__nome">{{ item.nome }}</h3>
+  <p class="item__especificacao">{{ item.especificacao }}</p>
+  <p class="item__referencia">Ref.: {{ item.referencia }}</p>
+  <div class="quantidade">
+    <button type="button" class="quantidade__botao" (click)="quantidadeAlterada.emit(-1)" [attr.aria-label]="'Diminuir quantidade de ' + item.nome">&minus;</button>
+    <input type="text" class="quantidade__valor" [value]="item.quantidade" readonly aria-label="Quantidade">
+    <button type="button" class="quantidade__botao" (click)="quantidadeAlterada.emit(1)" [attr.aria-label]="'Aumentar quantidade de ' + item.nome">+</button>
+  </div>
+</div>
+<div class="item__valores">
+  <p class="item__unitario">Unitário: {{ formatarMoeda(item.preco) }}</p>
+  <p class="item__total">{{ formatarMoeda(item.preco * item.quantidade) }}</p>
+  <div class="item__acoes">
+    <button type="button" class="link">&#9825; Salvar para depois</button>
+    <button type="button" class="link" (click)="remover.emit()">&#128465; Remover</button>
+  </div>
+</div>

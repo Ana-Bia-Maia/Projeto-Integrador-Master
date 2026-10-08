@@ -1,0 +1,197 @@
+/* Posicionamento do resumo do pedido */
+:host {
+  position: sticky;
+  top: 24px;
+  display: block;
+}
+
+.resumo {
+  padding: 24px;
+  box-shadow: var(--sombra-suave);
+}
+
+.cartao__titulo {
+  font-size: 16px;
+  font-weight: 700;
+}
+/* ========== */
+
+/* Linhas de valores e total do pedido */
+.resumo__cabecalho {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.resumo__contagem {
+  color: var(--cor-texto-suave);
+  font-size: 11px;
+}
+
+.resumo__linhas {
+  display: grid;
+  gap: 12px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+.resumo__linha {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.resumo__linha dt {
+  color: var(--cor-texto-suave);
+}
+
+.resumo__linha dd {
+  font-weight: 600;
+}
+
+.destaque-gratis {
+  color: var(--cor-madeira);
+}
+
+.resumo__linha--desconto,
+.resumo__linha--desconto dt,
+.resumo__linha--desconto dd {
+  color: var(--cor-madeira);
+}
+
+.resumo__total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 18px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.resumo__total strong {
+  font-size: 24px;
+}
+
+.resumo__parcelas {
+  margin-top: 4px;
+  color: var(--cor-texto-suave);
+  font-size: 11px;
+  text-align: right;
+}
+/* ========== */
+
+/* Destaque do pagamento por Pix */
+.pix {
+  margin: 16px 0;
+  padding: 12px 14px;
+  border: 1px solid #f0c3ac;
+  border-left: 3px solid var(--cor-madeira);
+  border-radius: var(--raio);
+  background: var(--cor-madeira-clara);
+}
+
+.pix__titulo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cor-madeira);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pix__titulo strong {
+  margin-left: auto;
+  font-size: 17px;
+}
+
+.pix__detalhe {
+  margin-top: 4px;
+  color: var(--cor-madeira);
+  font-size: 11px;
+}
+/* ========== */
+
+/* Botão de finalização e aviso de segurança */
+.botao--principal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  border-radius: var(--raio);
+  background: var(--cor-madeira);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.resumo__seguranca {
+  margin-top: 10px;
+  color: var(--cor-texto-suave);
+  font-size: 11px;
+  text-align: center;
+}
+/* ========== */
+
+/* Benefícios e garantias da compra */
+.garantias {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.garantia {
+  display: flex;
+  gap: 12px;
+  color: var(--cor-texto-suave);
+  font-size: 11px;
+}
+
+.garantia strong {
+  display: block;
+  margin-bottom: 2px;
+  color: var(--cor-texto);
+  font-size: 12px;
+}
+
+.garantia__icone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border: 1px solid var(--cor-borda);
+  border-radius: 50%;
+  background: var(--cor-fundo);
+}
+/* ========== */
+
+/* Ajustes do resumo para telas menores */
+@media (max-width: 900px) {
+  :host {
+    position: static;
+  }
+}
+/* ========== */
+
+/* Ajustes do resumo para celulares */
+@media (max-width: 620px) {
+  .resumo {
+    padding: 18px;
+  }
+}
+/* ========== */

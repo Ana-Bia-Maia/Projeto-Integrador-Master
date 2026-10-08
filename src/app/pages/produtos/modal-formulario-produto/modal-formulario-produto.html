@@ -1,0 +1,44 @@
+<!-- <div class="produto-modal-backdrop" (click)="fechar.emit()">
+  <section class="produto-modal" role="dialog" aria-modal="true" aria-labelledby="titulo-formulario-produto" (click)="$event.stopPropagation()">
+    <h2 id="titulo-formulario-produto">{{ produto() ? 'Editar produto' : 'Adicionar produto' }}</h2>
+
+    <form [formGroup]="formulario" (ngSubmit)="salvarProduto()">
+      <div class="produto-form-grid">
+        <label>Nome do produto
+          <input type="text" formControlName="nome">
+        </label>
+        <label>SKU
+          <input type="text" formControlName="sku">
+        </label>
+        <label>Categoria
+          <input type="text" formControlName="categoria">
+        </label>
+        <label>Preço de venda (R$)
+          <input type="number" formControlName="preco" step="0.01">
+        </label>
+        <label>Estoque (unidades)
+          <input type="number" formControlName="estoque">
+        </label>
+        <label>Status
+          <select formControlName="status">
+            <option value="Ativo">Ativo</option>
+            <option value="Inativo">Inativo</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="produto-imagem-campo">
+        <label for="imagem-produto">Link da imagem</label>
+        <input id="imagem-produto" type="text" formControlName="imagem" placeholder="https://exemplo.com/imagem.jpg">
+        @if (formulario.controls.imagem.value) {
+          <img class="produto-imagem-preview" [src]="formulario.controls.imagem.value" alt="Prévia do produto">
+        }
+      </div>
+
+      <div class="produto-modal-acoes">
+        <button class="produto-modal-botao produto-modal-secundario" type="button" (click)="fechar.emit()">Cancelar</button>
+        <button class="produto-modal-botao produto-modal-primario" type="submit">{{ produto() ? 'Salvar alterações' : 'Cadastrar produto' }}</button>
+      </div>
+    </form>
+  </section>
+</div>-->

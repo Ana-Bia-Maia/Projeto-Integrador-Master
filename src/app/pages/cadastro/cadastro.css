@@ -1,0 +1,351 @@
+/* Cores usadas pelo formulário */
+:host {
+
+  --bg-page: var(--cor-fundo);
+  --bg-white: var(--cor-superficie);
+  --text-main: var(--cor-texto);
+  --text-light: var(--cor-texto-suave);
+  --primary-color: var(--cor-madeira);
+  --border-color: var(--cor-borda);
+  --orange-accent: var(--cor-madeira);
+  --footer-bg: var(--cor-rodape);
+
+
+  --orange-hover: var(--cor-madeira);
+  --bg-soft: var(--cor-madeira-clara);
+  --erro: var(--cor-erro);
+  --verde: var(--cor-sucesso);
+
+}
+/* ========== */
+
+/* Fundo da página e cartão do formulário */
+.pagina {
+  min-height: 100vh;
+  background: var(--bg-page);
+  padding: 40px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  border-radius: 12px;
+  padding: 40px 48px;
+  box-shadow: 0 4px 24px rgba(74, 59, 50, 0.06);
+}
+/* ========== */
+
+/* Título e identificação do formulário */
+.cabecalho { text-align: center; margin-bottom: 28px; }
+
+.selo {
+  display: inline-block;
+  background: var(--bg-soft);
+  color: var(--primary-color);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 5px 14px;
+  border-radius: 4px;
+}
+
+.cabecalho h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--footer-bg);
+  margin: 12px 0 6px;
+}
+
+.cabecalho p { font-size: 14px; color: var(--text-light); margin: 0; }
+/* ========== */
+
+/* Seleção do tipo de cadastro */
+.tipo { margin-bottom: 28px; }
+
+.rotulo-tipo {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  margin-bottom: 8px;
+}
+
+.tipo-opcoes { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+.tipo-opcao {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: border-color .15s, background .15s;
+}
+
+.tipo-opcao input { position: absolute; opacity: 0; pointer-events: none; }
+
+.tipo-opcao .radio {
+  width: 14px; height: 14px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.tipo-opcao.ativo { border-color: var(--primary-color); color: var(--text-main); font-weight: 600; }
+.tipo-opcao.ativo .radio { border-color: var(--primary-color); box-shadow: inset 0 0 0 3px #fff; background: var(--primary-color); }
+.tipo-opcao:has(input:focus-visible) { outline: 2px solid var(--orange-accent); outline-offset: 2px; }
+/* ========== */
+
+/* Títulos e números das seções */
+.secao {
+  border-top: 1px solid var(--border-color);
+  padding-top: 22px;
+  margin-bottom: 24px;
+}
+
+.secao-topo { display: flex; justify-content: space-between; align-items: center; }
+
+.secao-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--footer-bg);
+  margin: 0 0 18px;
+}
+
+.numero {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--footer-bg);
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ========== */
+
+/* Campos e mensagens de validação */
+.campo { display: flex; flex-direction: column; margin-bottom: 16px; min-width: 0; }
+
+.campo label { font-size: 13px; font-weight: 500; margin-bottom: 6px; }
+
+.obrigatorio { color: var(--orange-accent); }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"],
+input[type="date"] {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--text-main);
+  background: var(--bg-white);
+  font-family: inherit;
+  transition: border-color .15s, box-shadow .15s;
+}
+
+input::placeholder { color: #bfb2a6; }
+
+input:focus {
+  outline: none;
+  border-color: var(--orange-accent);
+  box-shadow: 0 0 0 3px rgba(226, 123, 69, 0.18);
+}
+
+input.erro { border-color: var(--erro); }
+
+.msg-erro { color: var(--erro); font-size: 12px; margin-top: 4px; }
+
+.input-icone { position: relative; }
+.input-icone input { padding-right: 40px; }
+.input-icone > svg,
+.btn-olho {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.input-icone svg { width: 18px; height: 18px; fill: #b8a898; }
+
+.btn-olho {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+}
+.btn-olho:hover svg { fill: var(--primary-color); }
+.btn-olho:focus-visible { outline: 2px solid var(--orange-accent); border-radius: 4px; }
+/* ========== */
+
+/* Organização dos campos de endereço */
+.linha-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.linha-3 { display: grid; grid-template-columns: 1fr 1.3fr 1fr; gap: 16px; }
+.linha-cep { display: grid; grid-template-columns: 1fr 1.6fr; gap: 16px; }
+.campo-cidade { max-width: 50%; }
+
+.aviso {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--bg-soft);
+  border-radius: 6px;
+  padding: 12px;
+  align-self: end;
+  margin-bottom: 16px;
+}
+.aviso svg { width: 18px; height: 18px; fill: var(--primary-color); flex-shrink: 0; }
+.aviso p { margin: 0; font-size: 12px; line-height: 1.45; color: var(--primary-color); }
+
+
+.cep-grupo { display: flex; }
+.cep-grupo input { border-radius: 6px 0 0 6px; }
+
+.btn-buscar {
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background: var(--footer-bg);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-buscar:hover { background: var(--primary-color); }
+.btn-buscar:disabled { opacity: .7; cursor: wait; }
+/* ========== */
+
+/* Links do formulário */
+.link {
+  color: var(--orange-accent);
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.link:hover { text-decoration: underline; }
+/* ========== */
+
+/* Requisitos de senha */
+.requisitos {
+  background: var(--bg-soft);
+  border-radius: 6px;
+  padding: 12px 16px;
+}
+.requisitos-titulo {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+}
+.requisitos ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+}
+.requisitos li {
+  font-size: 12px;
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.requisitos li::before {
+  content: '';
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 2px solid #c9b8a6;
+}
+.requisitos li.ok { color: var(--verde); }
+.requisitos li.ok::before { background: var(--verde); border-color: var(--verde); }
+/* ========== */
+
+/* Confirmações e termos do cadastro */
+.checks { border-top: 1px solid var(--border-color); padding-top: 18px; margin-bottom: 20px; }
+
+.check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 13px;
+  line-height: 1.45;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.check input {
+  width: 16px; height: 16px;
+  margin: 2px 0 0;
+  accent-color: var(--orange-accent);
+  flex-shrink: 0;
+}
+.check.erro { color: var(--erro); }
+/* ========== */
+
+/* Envio do formulário e aviso de segurança */
+.btn-finalizar {
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  background: var(--orange-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-finalizar svg { width: 18px; height: 18px; fill: #fff; }
+.btn-finalizar:hover { background: var(--orange-hover); }
+.btn-finalizar:focus-visible { outline: 3px solid var(--primary-color); outline-offset: 2px; }
+
+.seguranca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-light);
+  margin: 16px 0 0;
+}
+.seguranca svg { width: 14px; height: 14px; fill: var(--orange-accent); }
+/* ========== */
+
+/* Ajustes do formulário para celulares */
+@media (max-width: 640px) {
+  .card { padding: 28px 20px; }
+  .linha-2, .linha-3, .linha-cep, .tipo-opcoes { grid-template-columns: 1fr; gap: 0; }
+  .tipo-opcoes { gap: 10px; }
+  .campo-cidade { max-width: 100%; }
+  .cabecalho h1 { font-size: 26px; }
+}
+/* ========== */
+
+/* Mensagem final do cadastro */
+.msg-final {
+  text-align: center;
+  font-size: 13px;
+  margin: 0 0 12px;
+}
+/* ========== */

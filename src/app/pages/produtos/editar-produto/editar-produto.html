@@ -1,0 +1,94 @@
+<div class="container">
+
+  <!-- ======================================================================
+       AVISO FLUTUANTE
+       ====================================================================== -->
+  @if (mensagemAviso) {
+    <div class="aviso">
+      {{ mensagemAviso }}
+    </div>
+  }
+
+  <!-- ======================================================================
+       CABEÇALHO DA PÁGINA
+       ====================================================================== -->
+  <header class="header">
+    <h1 class="logo">ARCHIMADEIRA</h1>
+    <span class="subtitulo">Editar Produto #{{ produto.sku }}</span>
+  </header>
+
+  <!-- ======================================================================
+       CONTEÚDO PRINCIPAL (FORMULÁRIO + FOTO)
+       ====================================================================== -->
+  <main class="grid-layout">
+
+    <!-- SEÇÃO 1: FORMULÁRIO DE DADOS -->
+    <section class="card">
+      <h2>Dados Básicos</h2>
+
+      <!-- Campo Nome -->
+      <div class="campo">
+        <label>Nome do Produto</label>
+        <input type="text" [value]="produto.nome" (input)="produto.nome = $any($event.target).value" />
+      </div>
+
+      <!-- Linha Categoria e Madeira -->
+      <div class="linha-dupla">
+        <div class="campo">
+          <label>Categoria</label>
+          <select [value]="produto.categoria" (change)="produto.categoria = $any($event.target).value">
+            @for (cat of categorias; track cat) {
+              <option [value]="cat">{{ cat }}</option>
+            }
+          </select>
+        </div>
+
+        <div class="campo">
+          <label>Madeira</label>
+          <select [value]="produto.madeira" (change)="produto.madeira = $any($event.target).value">
+            @for (mad of madeiras; track mad) {
+              <option [value]="mad">{{ mad }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <!-- Linha Preço e Estoque -->
+      <div class="linha-dupla">
+        <div class="campo">
+          <label>Preço (R$)</label>
+          <input type="number" [value]="produto.preco" (input)="produto.preco = $any($event.target).value" step="0.01" />
+        </div>
+
+        <div class="campo">
+          <label>Estoque (unidades)</label>
+          <input type="number" [value]="produto.estoque" (input)="produto.estoque = $any($event.target).value" />
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: IMAGEM DO PRODUTO -->
+    <section class="card card-foto">
+      <h2>Fotografia</h2>
+
+      <div class="preview-foto">
+        <img [src]="produto.fotoUrl" alt="Foto do Produto" />
+      </div>
+
+      <label class="btn-foto">
+        Substituir Foto
+        <input type="file" (change)="trocarFoto($event)" accept="image/*" hidden />
+      </label>
+    </section>
+
+  </main>
+
+  <!-- ======================================================================
+       BARRA DE AÇÕES (BOTÕES)
+       ====================================================================== -->
+  <footer class="acoes">
+    <button class="btn-secundario" (click)="descartar()">Descartar</button>
+    <button class="btn-principal" (click)="salvarProduto()">Salvar Alterações</button>
+  </footer>
+
+</div>

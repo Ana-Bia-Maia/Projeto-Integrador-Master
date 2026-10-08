@@ -1,0 +1,10 @@
+<div class="produto-modal-backdrop" (click)="fechar.emit()">
+  <section class="produto-modal" role="dialog" aria-modal="true" aria-labelledby="titulo-excluir-produto" tabindex="-1" (click)="$event.stopPropagation()">
+    <h2 id="titulo-excluir-produto">Excluir produto</h2>
+    <p>Tem certeza de que deseja excluir <strong>{{ produto().nome }}</strong>? Esta ação não pode ser desfeita.</p>
+    <div class="produto-modal-acoes">
+      <button class="produto-modal-botao produto-modal-secundario" type="button" (click)="fechar.emit()">Cancelar</button>
+      <button class="produto-modal-botao produto-modal-perigo" type="button" (click)="confirmar.emit()">Excluir produto</button>
+    </div>
+  </section>
+</div>

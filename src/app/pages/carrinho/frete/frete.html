@@ -1,0 +1,28 @@
+<section class="cartao">
+  <h2 class="cartao__titulo cartao__titulo--icone"><span aria-hidden="true">&#128666;</span> Simulação de Frete Especializado</h2>
+  <p class="cartao__apoio">Insira o CEP de entrega para conferir prazos com equipe própria de marcenaria:</p>
+
+  <form class="linha-formulario">
+
+    <label class="acessivel" for="campo-cep">CEP de entrega</label>
+    <input type="text" id="campo-cep" class="campo" name="cep" maxlength="9">
+    <button type="submit" class="botao botao--escuro">Calcular Frete</button>
+  </form>
+
+  <div class="opcoes-frete">
+    <label class="opcao">
+      <input type="radio" name="frete" [ngModel]="frete" (ngModelChange)="freteChange.emit($event)" [value]="0">
+      <span class="opcao__texto">
+        <span class="opcao__titulo">Entrega Padrão com Montagem Inclusa <strong class="destaque-gratis">GRÁTIS</strong></span>
+        <span class="opcao__detalhe">7 dias úteis &middot; Válido para Sul e Sudeste com montadores certificados</span>
+      </span>
+    </label>
+    <label class="opcao">
+      <input type="radio" name="frete" [ngModel]="frete" (ngModelChange)="freteChange.emit($event)" [value]="180">
+      <span class="opcao__texto">
+        <span class="opcao__titulo">Entrega Agendada da Arquitetura <strong>R$ 180,00</strong></span>
+        <span class="opcao__detalhe">Você escolhe o dia exato e horário com içamento e nivelamento fino.</span>
+      </span>
+    </label>
+  </div>
+</section>

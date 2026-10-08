@@ -1,0 +1,146 @@
+/* Estrutura principal do item no carrinho */
+:host {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr) auto;
+  gap: 18px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--cor-borda);
+}
+
+:host(:last-child) {
+  border-bottom: 0;
+  padding-bottom: 4px;
+}
+/* ========== */
+
+/* Foto e etiqueta do produto */
+.item__imagem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 96px;
+  overflow: hidden;
+  background: var(--cor-fundo);
+}
+
+.item__imagem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.item__etiqueta {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  background: rgba(29, 19, 13, 0.75);
+  color: #fff;
+  font-size: 10px;
+}
+/* ========== */
+
+/* Nome e detalhes do produto */
+.item__nome {
+  max-width: 380px;
+  font-family: 'PT Serif', Georgia, serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.item__especificacao,
+.item__referencia {
+  margin-top: 6px;
+  color: var(--cor-texto-suave);
+  font-size: 12px;
+}
+/* ========== */
+
+/* Preços e quantidade do item */
+.item__valores {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  text-align: right;
+}
+
+.item__unitario {
+  color: var(--cor-texto-suave);
+  font-size: 11px;
+}
+
+.item__total {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.item__acoes {
+  display: flex;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.quantidade {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio);
+}
+
+.quantidade__botao {
+  width: 30px;
+  height: 30px;
+  color: var(--cor-texto-suave);
+}
+
+.quantidade__botao:hover {
+  background: var(--cor-fundo);
+}
+
+.quantidade__valor {
+  width: 34px;
+  height: 30px;
+  border: 0;
+  border-right: 1px solid var(--cor-borda);
+  border-left: 1px solid var(--cor-borda);
+  background: transparent;
+  text-align: center;
+}
+/* ========== */
+
+/* Links e ações do item */
+.link {
+  color: var(--cor-madeira);
+  font-size: 12px;
+}
+
+.link:hover {
+  color: var(--cor-madeira);
+  text-decoration: underline;
+}
+/* ========== */
+
+/* Ajustes do item para celulares */
+@media (max-width: 620px) {
+  :host {
+    grid-template-columns: 72px minmax(0, 1fr);
+  }
+
+  .item__valores {
+    grid-column: 1 / -1;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .item__acoes {
+    margin-top: 10px;
+  }
+}
+/* ========== */

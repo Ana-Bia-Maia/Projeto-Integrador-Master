@@ -1,0 +1,28 @@
+<section class="table-container">
+  <div class="table-responsive">
+    <table>
+      <thead>
+        <tr>
+          <th>FOTO</th>
+          <th>NOME DO MÓVEL &amp; SKU</th>
+          <th>CATEGORIA</th>
+          <th>PREÇO VENDA (R$)</th>
+          <th>ESTOQUE</th>
+          <th>STATUS</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (produto of produtos; track produto.sku) {
+          <tr>
+          <td><img [src]="produto.imagem" [alt]="produto.nome" class="product-img"></td>
+          <td><strong>{{ produto.nome }}</strong><br><span class="sku">SKU: {{ produto.sku }}</span></td>
+          <td>{{ produto.categoria }}</td>
+          <td>{{ produto.preco }}</td>
+          <td>{{ produto.estoque }} un</td>
+          <td><span class="badge" [class.badge-ativo]="produto.status === 'Ativo'" [class.badge-inativo]="produto.status === 'Inativo'">{{ produto.status }}</span></td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

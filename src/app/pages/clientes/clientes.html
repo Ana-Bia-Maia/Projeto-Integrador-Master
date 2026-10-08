@@ -1,0 +1,78 @@
+<app-menu></app-menu>
+
+<div class="dashboard-container">
+	<app-sidebar></app-sidebar>
+
+	<main class="main-content">
+		<header class="top-header">
+			<div class="user-area">
+				<span class="notification" aria-label="Notificações"></span>
+				<span class="user-name">Arquiteto Curador</span>
+				<div class="user-avatar"><img src="/assets/images/avatarArquiteto.jpg" alt="Avatar do arquiteto curador"></div>
+			</div>
+		</header>
+
+		<section class="page-header">
+			<div>
+				<span class="breadcrumb">PAINEL DE CONTROLE / Relacionamento</span>
+				<h1>Clientes</h1>
+				<p>Consulte e mantenha os dados dos clientes da Archimadeira.</p>
+			</div>
+			<button class="button button-primary" type="button" (click)="abrirAdicao()">Adicionar cliente</button>
+		</section>
+
+		<section class="client-section" aria-labelledby="lista-clientes">
+			<div class="section-heading">
+				<div>
+					<h2 id="lista-clientes">Todos os clientes</h2>
+					<p>{{ clientes().length }} registros no cadastro</p>
+				</div>
+			</div>
+
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">CLIENTE</th>
+							<th scope="col">TELEFONE</th>
+							<th scope="col">CADASTRO</th>
+							<th scope="col">STATUS</th>
+							<th scope="col"><span class="acessivel">Ações</span></th>
+						</tr>
+					</thead>
+					<tbody>
+						@for (cliente of clientes(); track cliente.id) {
+							<tr>
+								<td>
+									<strong>{{ cliente.nome }}</strong>
+									<span class="email">{{ cliente.email }}</span>
+								</td>
+								<td>{{ cliente.telefone }}</td>
+								<td>{{ cliente.cadastro }}</td>
+								<td><span class="status" [class.status-inativo]="cliente.status === 'Inativo'">{{ cliente.status }}</span></td>
+								<td class="actions">
+									<button class="button button-quiet" type="button" [attr.aria-label]="'Editar ' + cliente.nome" (click)="abrirEdicao(cliente)">Editar</button>
+									<button class="button button-danger" type="button" [attr.aria-label]="'Excluir ' + cliente.nome" (click)="abrirExclusao(cliente)">Excluir</button>
+								</td>
+							</tr>
+						} @empty {
+							<tr><td class="empty-state" colspan="5">Nenhum cliente cadastrado.</td></tr>
+						}
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</main>
+</div>
+
+@if (modalAberto() === 'adicionar') {
+	<app-modal-adicionar-cliente (fechar)="fecharModal()" (salvar)="salvarCliente($event)"></app-modal-adicionar-cliente>
+}
+@if (modalAberto() === 'editar' && clienteSelecionado()) {
+	<app-modal-editar-cliente [cliente]="clienteSelecionado()!" (fechar)="fecharModal()" (salvar)="atualizarCliente($event)"></app-modal-editar-cliente>
+}
+@if (modalAberto() === 'excluir' && clienteSelecionado()) {
+	<app-modal-excluir-cliente [cliente]="clienteSelecionado()!" (fechar)="fecharModal()" (confirmar)="excluirCliente()"></app-modal-excluir-cliente>
+}
+
+<app-footer></app-footer>

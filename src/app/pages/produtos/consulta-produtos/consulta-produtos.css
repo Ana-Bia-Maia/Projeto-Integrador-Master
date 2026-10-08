@@ -1,0 +1,133 @@
+.fundo {
+    padding: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #faf9f8;
+    min-height: 100vh;
+}
+
+.topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 30px;
+}
+
+.topo h1 {
+    margin: 10px 0 0 0;
+    color: #2c1e16;
+    font-size: 32px;
+}
+
+/* CORRIGIDO: Nome da classe ajustado de .texto-ficha para .ficha conforme o seu HTML */
+.ficha {
+    color: #b84a28;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.caixa-status {
+    background-color: #e6f4ea;
+    color: #1e8e3e;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.botoes button {
+    padding: 10px 16px;
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.botao-voltar {
+    background-color: white;
+    color: #333;
+    border: 1px solid #dcdcdc;
+}
+
+.botao-editar {
+    background-color: #b84a28;
+    color: white;
+    border: none;
+}
+
+.caixa-principal {
+    display: flex;
+    gap: 50px;
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+.lado-esquerdo {
+    flex: 0 0 320px;
+    background-color: #f5f5f5;
+    padding: 30px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 320px; /* Garante um quadro simétrico para a foto */
+}
+
+.lado-esquerdo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Mantém a proporção da foto sem distorcer */
+    border-radius: 4px;
+}
+
+.lado-direito {
+    flex: 1;
+}
+
+.lado-direito br {
+    display: none;
+}
+
+.lado-direito h3 {
+    color: #999;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 8px;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* CORRIGIDO: Organização dos blocos de informações em grid para não quebrar o layout em duas linhas */
+.lado-direito p {
+    display: inline-block;
+    width: 48%;
+    color: #2c1e16;
+    font-size: 14px;
+    margin-bottom: 15px;
+    vertical-align: top;
+}
+
+/* CORRIGIDO: Customização aplicada na tag <b> usada no seu arquivo HTML */
+.lado-direito p b {
+    color: #777;
+    font-weight: normal;
+    font-size: 12px;
+    display: block; /* Cria o rótulo cinza pequeno em cima do valor do produto */
+    margin-bottom: 4px;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #f0f0f0;
+    margin: 15px 0;
+    width: 100%;
+}

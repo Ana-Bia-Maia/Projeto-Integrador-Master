@@ -1,0 +1,165 @@
+/* Botões e links do carrinho */
+button {
+  color: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.link:hover {
+  color: var(--cor-madeira);
+  text-decoration: underline;
+}
+.link {
+  color: var(--cor-madeira);
+  font-size: 12px;
+}
+.link--perigo {
+  color: #c0392b;
+}
+/* ========== */
+
+/* Indicador de etapas da compra */
+.etapas {
+  background: var(--cor-fundo-etapas);
+  border-bottom: 1px solid var(--cor-borda);
+}
+.etapas__lista {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 22px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  color: var(--cor-texto-suave);
+  font-size: 12px;
+}
+.etapa {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.etapa:not(:last-child)::after {
+  content: '/';
+  margin-left: 14px;
+  color: var(--cor-borda);
+}
+.etapa__numero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 10px;
+}
+.etapa--ativa {
+  color: var(--cor-madeira);
+  font-weight: 600;
+}
+.etapa--ativa .etapa__numero {
+  background: var(--cor-madeira);
+  border-color: var(--cor-madeira);
+  color: #fff;
+}
+/* ========== */
+
+/* Título e estrutura do conteúdo */
+.conteudo {
+  padding-top: 36px;
+  padding-bottom: 48px;
+}
+.conteudo__titulo {
+  margin-bottom: 24px;
+}
+.selo {
+  margin-bottom: 8px;
+  color: var(--cor-madeira);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+.conteudo__titulo h1 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: 34px;
+  font-weight: 400;
+}
+.grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  align-items: start;
+}
+.coluna-principal {
+  display: grid;
+  gap: 24px;
+}
+.cartao {
+  padding: 24px;
+  box-shadow: var(--sombra-suave);
+}
+.cartao__titulo {
+  font-size: 16px;
+  font-weight: 700;
+}
+/* ========== */
+
+/* Lista de itens e ferramentas do carrinho */
+.carrinho__cabecalho {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--cor-borda);
+}
+.carrinho__contador {
+  color: var(--cor-texto-suave);
+  font-size: 12px;
+  font-weight: 400;
+}
+.carrinho__links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.carrinho__vazio {
+  padding: 28px 0 4px;
+  color: var(--cor-texto-suave);
+  text-align: center;
+}
+.grade-utilidades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+/* ========== */
+
+/* Ajustes do carrinho para telas menores */
+@media (max-width: 900px) {
+  .grade,
+  .grade-utilidades {
+    grid-template-columns: 1fr;
+  }
+}
+/* ========== */
+
+/* Ajustes do carrinho para celulares */
+@media (max-width: 620px) {
+  .conteudo__titulo h1 {
+    font-size: 28px;
+  }
+  .cartao {
+    padding: 18px;
+  }
+  .etapas__lista {
+    gap: 10px;
+  }
+  .etapa:not(:last-child)::after {
+    margin-left: 4px;
+  }
+}
+/* ========== */

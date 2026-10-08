@@ -1,0 +1,123 @@
+.fundo-pagina {
+    background-color: var(--cor-fundo);
+    min-height: 100vh;
+    margin: 0;
+}
+
+.cabecalho {
+    background-color: var(--cor-superficie);
+    padding: 15px 0;
+    text-align: center;
+    box-shadow: var(--sombra-suave);
+    width: 100%;
+}
+
+.cabecalho h2 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    color: var(--cor-texto);
+    margin: 0;
+    font-size: 26px;
+    letter-spacing: 2px;
+}
+
+.caixa-login {
+    background-color: var(--cor-superficie);
+    width: 100%;
+    max-width: 580px;
+    max-height: 1000px;
+    margin: 60px auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--sombra-suave);
+    text-align: center;
+}
+
+.caixa-login h3 {
+    font-family: 'Instrument Serif', Georgia, serif;
+    color: var(--cor-texto);
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.caixa-login p {
+    color: var(--cor-texto-suave);
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.campo {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.campo label {
+    display: block;
+    font-weight: 600;
+    color: var(--cor-texto);
+    margin-bottom: 8px;
+    font-size: 13px;
+}
+
+.campo input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: var(--cor-madeira);
+    background-color: var(--cor-superficie);
+    box-shadow: 0 0 0 3px var(--cor-madeira-clara);
+}
+
+.botao-entrar {
+    background-color: var(--cor-madeira);
+    color: var(--cor-superficie);
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+.botao-entrar:hover {
+    background-color: var(--cor-escura);
+    transform: translateY(-2px);
+}
+
+.botao-entrar:active {
+    transform: translateY(1px);
+}
+
+.rodape-caixa {
+    margin-top: 30px;
+    border-top: 1px solid var(--cor-borda);
+    padding-top: 20px;
+    font-size: 13px;
+    color: var(--cor-texto-suave);
+}
+
+.rodape-caixa a {
+    color: var(--cor-madeira);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.rodape-caixa a:hover {
+    color: var(--cor-escura);
+    text-decoration: underline;
+}

@@ -1,0 +1,35 @@
+<div class="cliente-modal-backdrop" (click)="fechar.emit()">
+  <section class="cliente-modal" role="dialog" aria-modal="true" aria-labelledby="titulo-editar-cliente" tabindex="-1" (click)="$event.stopPropagation()">
+    <h2 id="titulo-editar-cliente">Editar cliente</h2>
+    <form [formGroup]="formulario" (ngSubmit)="salvarAlteracoes()">
+      <label>Nome completo
+        <input type="text" formControlName="nome" autocomplete="name">
+        @if (formulario.controls.nome.touched && formulario.controls.nome.invalid) {
+          <span class="cliente-modal-erro">Informe um nome com pelo menos 3 caracteres.</span>
+        }
+      </label>
+      <label>E-mail
+        <input type="email" formControlName="email" autocomplete="email">
+        @if (formulario.controls.email.touched && formulario.controls.email.invalid) {
+          <span class="cliente-modal-erro">Informe um e-mail válido.</span>
+        }
+      </label>
+      <label>Telefone
+        <input type="tel" formControlName="telefone" autocomplete="tel">
+        @if (formulario.controls.telefone.touched && formulario.controls.telefone.invalid) {
+          <span class="cliente-modal-erro">Informe o telefone do cliente.</span>
+        }
+      </label>
+      <label>Status
+        <select formControlName="status">
+          <option value="Ativo">Ativo</option>
+          <option value="Inativo">Inativo</option>
+        </select>
+      </label>
+      <div class="cliente-modal-acoes">
+        <button class="button button-secondary" type="button" (click)="fechar.emit()">Cancelar</button>
+        <button class="button button-primary" type="submit">Salvar alterações</button>
+      </div>
+    </form>
+  </section>
+</div>

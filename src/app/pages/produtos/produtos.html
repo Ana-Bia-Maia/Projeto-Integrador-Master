@@ -1,0 +1,200 @@
+<app-menu></app-menu>
+
+<div class="dashboard-container">
+
+   <app-sidebar></app-sidebar>
+
+    <main class="main-content">
+
+        <header class="top-header">
+            <div class="search-area">
+                <input type="text" placeholder="Buscar produtos, SKU, coleções ou medidas...">
+            </div>
+            <div class="user-area">
+                <span class="notification"></span>
+                <div class="user-info">
+                    <span class="user-name">Arquiteto Curador</span>
+                </div>
+                <div class="user-avatar">
+                    <img src="/assets/images/avatarArquiteto.jpg" alt="Avatar">
+                </div>
+            </div>
+        </header>
+
+        <section class="page-header">
+            <div class="page-title-area">
+                <span class="breadcrumb">PAINEL DE CONTROLE / Gestão do Acervo</span>
+                <h1>Manutenção de Produtos</h1>
+                <p>Gerencie o catálogo, níveis de estoque, acabamentos e especificação rápida.</p>
+            </div>
+            <div class="page-actions">
+                <button class="btn-outline">Exportar / Importar CSV</button>
+                <button class="btn-primary" type="button" (click)="abrirAdicao()">Novo Produto</button>
+            </div>
+        </section>
+
+        <section class="summary-cards">
+
+            <div class="card">
+                <div class="card-value">{{ totalProdutos() }}</div>
+                <p class="card-subtitle">Produtos cadastrados</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>ESTOQUE BAIXO</h3>
+                </div>
+                <div class="card-value alert-text">{{ produtosComEstoqueBaixo() }}</div>
+                <p class="card-subtitle">Necessita reposição</p>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>PRODUTOS ATIVOS</h3>
+                    <span class="icon-eye">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                            <circle cx="12" cy="12" r="3"></circle>
+                        </svg>
+                    </span>
+                </div>
+                <div class="card-value">{{ produtosAtivos() }}</div>
+                <p class="card-subtitle text-highlight">Produtos disponíveis para venda</p>
+            </div>
+        </section>
+
+        <section class="filters-container">
+            <div class="filter-group">
+                <label>Busca Direta</label>
+                <input type="text" placeholder="Nome do móvel, SKU ou código...">
+            </div>
+            <div class="filter-group">
+                <label>Categoria</label>
+                <select>
+                    <option>Todas as Categorias</option>
+                    <option>Sofás & Poltronas</option>
+                    <option>Quartos & Camas</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Status do Produto</label>
+                <select>
+                    <option>Todos os Status</option>
+                    <option>Ativo</option>
+                    <option>Inativo</option>
+                </select>
+            </div>
+            <div class="filter-button">
+                <button class="btn-dark">Filtrar</button>
+            </div>
+        </section>
+
+        <div class="active-filters">
+            <span>Filtros ativos:</span> <span class="tag">Categoria: Sofás & Poltronas ✖</span> <span
+                class="tag">Status: Ativo ✖</span>
+        </div>
+
+        <section class="table-container">
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>FOTO</th>
+                            <th>NOME DO MÓVEL & SKU</th>
+                            <th>CATEGORIA</th>
+                            <th>PREÇO VENDA (R$)</th>
+                            <th>ESTOQUE</th>
+                            <th>STATUS</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (produto of produtos(); track produto.id) {
+                            <tr>
+                                <td><input type="checkbox" [attr.aria-label]="'Selecionar ' + produto.nome"></td>
+                                <td>
+                                  <img [src]="produto.imagem" 
+                                       [alt]="produto.nome" 
+                                       class="product-img" 
+                                       (click)="abrirConsulta(produto)" 
+                                       style="cursor: pointer;" 
+                                       title="Clique para consultar detalhes" />
+                                </td>
+                                <td>
+                                    <strong>{{ produto.nome }}</strong><br>
+                                    <span class="sku">SKU: {{ produto.sku }}</span>
+                                </td>
+                                <td>{{ produto.categoria }}</td>
+                                <td>R$ {{ produto.preco }}</td>
+                                <td>
+                                    {{ produto.estoque }} un
+                                    <span class="badge"
+                                        [class.badge-normal]="faixaEstoque(produto.estoque) === 'Normal'"
+                                        [class.badge-baixo]="faixaEstoque(produto.estoque) === 'Baixo'"
+                                        [class.badge-esgotado]="faixaEstoque(produto.estoque) === 'Esgotado'">
+                                        {{ faixaEstoque(produto.estoque) }}
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="badge" [class.badge-ativo]="produto.status === 'Ativo'" [class.badge-inativo]="produto.status === 'Inativo'">
+                                        {{ produto.status }}
+                                    </span>
+                                </td>
+                                <td class="actions-col">
+                                    <button class="btn-action-text" type="button" (click)="abrirEdicao(produto)">Editar</button>
+                                    <button class="btn-action-text" type="button" (click)="abrirExclusao(produto)">Excluir</button>
+                                </td>
+                            </tr>
+                        } @empty {
+                            <tr><td class="empty-state" colspan="8">Nenhum produto cadastrado.</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="pagination">
+            <span class="page-info">{{ totalProdutos() }} produtos cadastrados</span>
+        </section>
+
+        <section class="info-boxes">
+            <div class="info-box">
+                <span class="info-icon"></span>
+                <div>
+                    <h4>Edição Rápida de Preço Direto na Tabela</h4>
+                    <p>Altere os valores na própria linha e pressione Enter para atualizar automaticamente.</p>
+                </div>
+            </div>
+            <div class="info-box">
+                <span class="info-icon"></span>
+                <div>
+                    <h4>Sincronização de Marcenaria Sob Medida</h4>
+                    <p>Produtos marcados com este selo possuem tempo de produção customizado de acordo com o pedido.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>ARCHIMADEIRA</h3>
+                    <p>© 2026 ArchiMadeira Marcenaria & Design de Interiores.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#">Termos de Serviço</a>
+                    <a href="#">Política de Privacidade</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+</div>
+
+@if (modalAberto() === 'excluir' && produtoSelecionado()) {
+    <app-modal-excluir-produto
+        [produto]="produtoSelecionado()!"
+        (fechar)="fecharModal()"
+        (confirmar)="excluirProduto()">
+    </app-modal-excluir-produto>
+}

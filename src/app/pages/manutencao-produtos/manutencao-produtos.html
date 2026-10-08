@@ -1,0 +1,19 @@
+<app-menu></app-menu>
+
+<div class="dashboard-container">
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+    <header class="top-header">
+      <div class="user-area"><span class="notification" aria-label="Notificações"></span><div class="user-info"><span class="user-name">Arquiteto Curador</span></div><div class="user-avatar"><img src="/assets/images/avatarArquiteto.jpg" alt="Avatar do arquiteto curador"></div></div>
+    </header>
+
+    <section class="page-header">
+      <div class="page-title-area"><span class="breadcrumb">PAINEL DE CONTROLE / Gestão do Acervo</span><h1>Manutenção de Produtos</h1><p>Gerencie o catálogo, níveis de estoque, acabamentos e especificação rápida.</p></div>
+    </section>
+
+    <app-tabela-produtos [produtos]="produtos"></app-tabela-produtos>
+  </main>
+</div>
+
+<app-footer></app-footer>

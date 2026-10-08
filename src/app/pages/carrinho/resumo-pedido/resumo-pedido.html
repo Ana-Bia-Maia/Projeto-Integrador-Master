@@ -1,0 +1,40 @@
+<aside>
+  <section class="cartao resumo">
+    <header class="resumo__cabecalho">
+      <h2 class="cartao__titulo">Resumo do Pedido</h2>
+      <span class="resumo__contagem">{{ quantidadeItens }} {{ quantidadeItens === 1 ? 'peça selecionada' : 'peças selecionadas' }}</span>
+    </header>
+    <dl class="resumo__linhas">
+      <div class="resumo__linha">
+        <dt>Subtotal dos Produtos:</dt>
+        <dd>{{ formatarMoeda(subtotal) }}</dd>
+      </div>
+      <div class="resumo__linha">
+        <dt>Frete com Montagem:</dt>
+        <dd [class.destaque-gratis]="frete === 0">{{ frete === 0 ? 'GRÁTIS' : formatarMoeda(frete) }}</dd>
+      </div>
+      <div class="resumo__linha resumo__linha--desconto" [hidden]="percentualCupom === 0">
+        <dt>Cupom ({{ cupomAplicado }} - {{ percentualCupom }}% OFF):</dt>
+        <dd>- {{ formatarMoeda(desconto) }}</dd>
+      </div>
+    </dl>
+    <div class="resumo__total">
+      <span>Total do Pedido:</span>
+      <strong>{{ formatarMoeda(total) }}</strong>
+    </div>
+    <p class="resumo__parcelas">ou em até 10x de <span>{{ formatarMoeda(total / 10) }}</span> sem juros</p>
+    <div class="pix">
+      <p class="pix__titulo"><span aria-hidden="true">&#9635;</span> À VISTA NO PIX <strong>{{ formatarMoeda(totalPix) }}</strong></p>
+      <p class="pix__detalhe">Economia imediata de mais {{ formatarMoeda(total - totalPix) }} (5% OFF adicional)</p>
+    </div>
+    <button type="button" class="botao--principal">
+      <span aria-hidden="true">&#128274;</span> Finalizar Compra / Ir para Entrega
+    </button>
+    <p class="resumo__seguranca">Processamento criptografado de ponta a ponta</p>
+    <ul class="garantias">
+      <li class="garantia"><span class="garantia__icone" aria-hidden="true">&#128737;</span><span><strong>Garantia de Fábrica 5 Anos</strong>Cobertura integral contra empenamento estrutural.</span></li>
+      <li class="garantia"><span class="garantia__icone" aria-hidden="true">&#127795;</span><span><strong>Madeira Certificada FSC&reg;</strong>Manejo sustentável e rastreabilidade botânica.</span></li>
+      <li class="garantia"><span class="garantia__icone" aria-hidden="true">&#128273;</span><span><strong>Pagamento 100% Seguro</strong>Ambiente certificado com auditoria contínua PCI-DSS.</span></li>
+    </ul>
+  </section>
+</aside>

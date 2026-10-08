@@ -1,0 +1,26 @@
+<div class="fundo-pagina">
+    <app-menu></app-menu>
+
+    <div class="caixa-login">
+        <h3>Acesse sua conta</h3>
+        <p>Digite o seu e-mail ou CPF</p>
+
+        <form (ngSubmit)="fazerLogin()">
+            <div class="campo">
+                <label for="email">E-mail ou CPF</label>
+                <input id="email" type="text" name="email" [(ngModel)]="emailOuCpf">
+            </div>
+            <div class="campo">
+                <label for="senha">Senha:</label>
+                <input id="senha" type="password" name="senha" [(ngModel)]="senha">
+            </div>
+
+            <button type="submit" class="botao-entrar">ENTRAR NA CONTA</button>
+        </form>
+
+        <div class="rodape-caixa">
+            <p>Ainda não é cadastrado? <a href="#">Criar conta agora</a></p>
+        </div>
+    </div>
+<app-footer></app-footer>
+</div>

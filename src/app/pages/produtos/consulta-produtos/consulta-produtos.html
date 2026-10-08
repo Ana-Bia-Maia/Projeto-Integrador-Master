@@ -1,0 +1,47 @@
+<div class="fundo">
+  <!-- Só renderiza a ficha se o produto tiver sido recebido com sucesso -->
+  @if (produto) {
+    <p class="titulo">Consulta de Produtos</p>
+
+    <div class="topo">
+        <div>
+            <span class="texto ficha">Ficha tecnica</span>
+            <span class="caixa-status">{{ produto.status }}</span>
+            <h1>{{ produto.nome }}</h1>
+        </div>
+        <div class="botoes">
+            <button (click)="voltar()" class="botao-voltar">Voltar</button>
+            <button (click)="editarProduto()" class="botao-editar">Editar Produto</button>
+        </div>
+    </div>
+
+    <div class="caixa-principal">
+
+        <div class="lado-esquerdo">
+            <!-- CORRIGIDO: Troca a foto automaticamente baseada no produto clicado -->
+            <img [src]="produto.imagem" [alt]="produto.nome" width="300">
+        </div>
+
+        <div class="lado-direito">
+            <h3>INFORMAÇÕES DO PRODUTO</h3>
+            <p><b>Nome do Produto:</b> {{ produto.nome }}</p>
+            <p><b>Código SKU:</b> {{ produto.sku }}</p>
+            <hr>
+            <h3>CLASSIFICAÇÃO E MATERIAL</h3>
+            <p><b>Categoria:</b> {{ produto.categoria }}</p>
+            <p><b>Material:</b> {{ produto.madeira || 'Madeira Maciça Archimadeira' }}</p>
+            <hr>
+            <h3>COMERCIAL & LOGÍSTICA</h3>
+            <p><b>Preço de tabela:</b> R$ {{ produto.preco }}</p>
+            <p><b>Estoque:</b> {{ produto.estoque }} unidades </p>
+            <p><b>Status:</b> {{ produto.status }}</p>
+        </div>
+    </div>  
+  } @else {
+    <!-- Tratamento caso tentem acessar a página sem clicar em nada antes -->
+    <div class="topo">
+        <h1>Nenhum produto foi selecionado para consulta</h1>
+        <button (click)="voltar()" class="botao-voltar">Voltar para o Painel</button>
+    </div>
+  }
+</div>

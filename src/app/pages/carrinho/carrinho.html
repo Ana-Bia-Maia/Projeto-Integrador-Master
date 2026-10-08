@@ -1,0 +1,66 @@
+<app-menu></app-menu>
+
+<section class="etapas" aria-label="Progresso da compra">
+  <div class="container etapas__lista">
+    <span class="etapa etapa--ativa"><span class="etapa__numero">1</span> Carrinho (Ativo)</span>
+    <span class="etapa"><span class="etapa__numero">2</span> Identificação</span>
+    <span class="etapa"><span class="etapa__numero">3</span> Entrega Especializada</span>
+    <span class="etapa"><span class="etapa__numero">4</span> Pagamento</span>
+  </div>
+</section>
+
+<main class="container conteudo">
+  <header class="conteudo__titulo">
+    <p class="selo">Cesto curado &amp; marcenaria exclusiva</p>
+    <h1>Carrinho de Compras</h1>
+  </header>
+
+  <div class="grade">
+    <div class="coluna-principal">
+      <section class="cartao carrinho">
+        <header class="carrinho__cabecalho">
+          <h2 class="cartao__titulo">Seu Carrinho <span class="carrinho__contador">({{ itens.length }} {{ itens.length === 1 ? 'item' : 'itens' }})</span></h2>
+          <div class="carrinho__links">
+            <a href="#" class="link">Continuar Comprando</a>
+            <button type="button" class="link link--perigo" (click)="esvaziarCarrinho()" [hidden]="itens.length === 0">&#8635; Esvaziar carrinho</button>
+          </div>
+        </header>
+
+        <ul class="lista-itens">
+          <li app-item-carrinho *ngFor="let item of itens"
+              [item]="item"
+              (quantidadeAlterada)="alterarQuantidade(item, $event)"
+              (remover)="removerItem(item)">
+          </li>
+        </ul>
+
+        <p class="carrinho__vazio" *ngIf="itens.length === 0">Seu carrinho está vazio. <a href="#" class="link">Voltar ao catálogo</a></p>
+      </section>
+
+      <div class="grade-utilidades">
+        <app-frete [cep]="cep" [frete]="frete" (cepChange)="cep = $event" (freteChange)="frete = $event"></app-frete>
+        <app-cupom
+          [codigoCupom]="codigoCupom"
+          [mensagemCupom]="mensagemCupom"
+          [cupomValido]="cupomValido"
+          (codigoCupomChange)="codigoCupom = $event"
+          (aplicar)="aplicarCupom()"
+          (remover)="removerCupom()">
+        </app-cupom>
+      </div>
+    </div>
+
+    <app-resumo-pedido
+      [quantidadeItens]="itens.length"
+      [subtotal]="subtotal"
+      [frete]="frete"
+      [desconto]="desconto"
+      [cupomAplicado]="cupomAplicado"
+      [percentualCupom]="percentualCupom"
+      [total]="total"
+      [totalPix]="totalPix">
+    </app-resumo-pedido>
+  </div>
+</main>
+
+<app-footer></app-footer>

@@ -1,0 +1,78 @@
+<app-menu></app-menu>
+
+<main class="home container">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero__content">
+      <span class="hero__tag">Coleção exclusiva</span>
+      <h1 id="hero-title">Móveis de qualidade para viver melhor</h1>
+      <p>Design autoral, madeira certificada e acabamento pensado para acompanhar a sua casa por muitos anos.</p>
+      <div class="hero__actions">
+        <a class="button button--light" href="#catalogo">Explorar catálogo</a>
+        <span>Até 40% OFF em peças selecionadas</span>
+      </div>
+    </div>
+    <div class="hero__media">
+      <img class="hero__image" ngSrc="/assets/images/sofa2lugares.jpeg" alt="Sofá retrátil em uma sala contemporânea" fill priority>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="ambientes-title">
+    <header class="section__header">
+      <div>
+        <p class="eyebrow">Encontre seu espaço</p>
+        <h2 id="ambientes-title">Navegue por ambientes</h2>
+        <p>Soluções para cada canto da casa, com marcenaria e conforto.</p>
+      </div>
+    </header>
+    <div class="rooms">
+      @for (ambiente of ambientes; track ambiente.nome) {
+        <a class="room" href="#catalogo">
+          <span class="room__media">
+            <img [ngSrc]="ambiente.imagem" [alt]="ambiente.nome" fill>
+          </span>
+          <span class="room__text">
+            <strong>{{ ambiente.nome }}</strong>
+            <small>{{ ambiente.detalhe }}</small>
+          </span>
+          <span class="room__arrow" aria-hidden="true">&#8594;</span>
+        </a>
+      }
+    </div>
+  </section>
+
+  <section class="section" id="catalogo" aria-labelledby="catalogo-title">
+    <header class="section__header">
+      <div>
+        <p class="eyebrow">Peças selecionadas</p>
+        <h2 id="catalogo-title">Destaques da loja</h2>
+        <p>Produtos para transformar a rotina e a atmosfera da sua casa.</p>
+      </div>
+    </header>
+
+    <div class="products">
+      @for (produto of produtos; track produto.nome) {
+        <article class="product">
+          <div class="product__media">
+            <img class="product__image" [ngSrc]="produto.imagem" [alt]="produto.nome" fill>
+            <span class="badge" [class.badge--dark]="produto.seloEscuro">{{ produto.selo }}</span>
+          </div>
+          <div class="product__body">
+            <h3>{{ produto.nome }}</h3>
+            <p class="product__old">De: {{ produto.precoAnterior }}</p>
+            <p class="product__price">{{ produto.preco }} <small>à vista</small></p>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <section class="benefits" aria-label="Benefícios da loja">
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">FSC</span><div><h3>Madeira certificada</h3><p>Manejo responsável com origem rastreável.</p></div></article>
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">7d</span><div><h3>Entrega garantida</h3><p>Montagem especializada e entrega acompanhada.</p></div></article>
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">10x</span><div><h3>Até 10x sem juros</h3><p>Opções de pagamento para a sua compra.</p></div></article>
+    <article class="benefit"><span class="benefit__mark" aria-hidden="true">SSL</span><div><h3>Compra segura</h3><p>Seus dados protegidos durante a navegação.</p></div></article>
+  </section>
+
+</main>
+
+<app-footer></app-footer>
