@@ -10,4 +10,5 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class MenuComponent {
   logo = '/assets/icons/chair-logo.png';
+  cart = '/assets/icons/cart.svg';
 }
