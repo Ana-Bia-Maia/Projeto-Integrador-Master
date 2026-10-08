@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { FooterComponent } from '../../shared/footer/footer';
-import { MenuComponent } from '../../shared/menu/menu';
-import { SidebarComponent } from '../../shared/sidebar/sidebar';
+import { FooterComponent } from '../../../shared/footer/footer';
+import { MenuComponent } from '../../../shared/menu/menu';
+import { SidebarComponent } from '../../../shared/sidebar/sidebar';
 import { TabelaProdutosComponent } from './tabela-produtos/tabela-produtos';
-import { Produto } from '../../models/produto.model';
+import { Produto } from '../../../models/produto.model';
 
 @Component({
   selector: 'app-manutencao-produtos',

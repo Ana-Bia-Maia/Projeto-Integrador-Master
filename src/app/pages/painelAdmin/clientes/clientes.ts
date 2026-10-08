@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { MenuComponent } from '../../shared/menu/menu';
-import { FooterComponent } from '../../shared/footer/footer';
-import { SidebarComponent } from '../../shared/sidebar/sidebar';
-import { Cliente, DadosCliente } from '../../models/cliente.model';
+import { MenuComponent } from '../../../shared/menu/menu';
+import { FooterComponent } from '../../../shared/footer/footer';
+import { SidebarComponent } from '../../../shared/sidebar/sidebar';
+import { Cliente, DadosCliente } from '../../../models/cliente.model';
 import { ModalAdicionarClienteComponent } from './modal-adicionar-cliente/modal-adicionar-cliente';
 import { ModalEditarClienteComponent } from './modal-editar-cliente/modal-editar-cliente';
 import { ModalExcluirClienteComponent } from './modal-excluir-cliente/modal-excluir-cliente';

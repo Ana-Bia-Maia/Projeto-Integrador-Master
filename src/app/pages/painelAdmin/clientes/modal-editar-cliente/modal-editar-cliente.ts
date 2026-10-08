@@ -1,16 +1,17 @@
-import { ChangeDetectionStrategy, Component, inject, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, OnInit, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { DadosCliente, StatusCliente } from '../../../models/cliente.model';
+import { Cliente, DadosCliente, StatusCliente } from '../../../../models/cliente.model';
 
 @Component({
-  selector: 'app-modal-adicionar-cliente',
+  selector: 'app-modal-editar-cliente',
   imports: [ReactiveFormsModule],
-  templateUrl: './modal-adicionar-cliente.html',
+  templateUrl: './modal-editar-cliente.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ModalAdicionarClienteComponent {
+export class ModalEditarClienteComponent implements OnInit {
   private readonly formBuilder = inject(FormBuilder);
 
+  readonly cliente = input.required<Cliente>();
   readonly fechar = output<void>();
   readonly salvar = output<DadosCliente>();
   readonly formulario = this.formBuilder.nonNullable.group({
@@ -20,7 +21,12 @@ export class ModalAdicionarClienteComponent {
     status: ['Ativo' as StatusCliente, Validators.required],
   });
 
-  salvarCliente(): void {
+  ngOnInit(): void {
+    const { nome, email, telefone, status } = this.cliente();
+    this.formulario.setValue({ nome, email, telefone, status });
+  }
+
+  salvarAlteracoes(): void {
     if (this.formulario.invalid) {
       this.formulario.markAllAsTouched();
       return;
