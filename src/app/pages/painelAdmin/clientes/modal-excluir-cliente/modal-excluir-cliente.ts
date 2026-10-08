@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
-import { Cliente } from '../../../models/cliente.model';
+import { Cliente } from '../../../../models/cliente.model';
 
 @Component({
   selector: 'app-modal-excluir-cliente',

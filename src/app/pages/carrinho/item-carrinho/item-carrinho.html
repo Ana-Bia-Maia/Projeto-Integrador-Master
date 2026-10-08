@@ -1,22 +1,22 @@
-<div class="item__imagem" [style.--tom-madeira]="item.madeira">
-  <img *ngIf="item.imagem" [src]="item.imagem" [alt]="item.nome">
-  <span class="item__etiqueta">{{ etiquetaMadeira }}</span>
+<div class="item__imagem">
+  @if (item().imagem) {
+    <img [src]="item().imagem" [alt]="item().nome">
+  }
 </div>
 <div class="item__dados">
-  <h3 class="item__nome">{{ item.nome }}</h3>
-  <p class="item__especificacao">{{ item.especificacao }}</p>
-  <p class="item__referencia">Ref.: {{ item.referencia }}</p>
+  <h3 class="item__nome">{{ item().nome }}</h3>
+  <p class="item__categoria">{{ item().categoria }}</p>
+  <p class="item__sku">SKU: {{ item().sku }}</p>
   <div class="quantidade">
-    <button type="button" class="quantidade__botao" (click)="quantidadeAlterada.emit(-1)" [attr.aria-label]="'Diminuir quantidade de ' + item.nome">&minus;</button>
-    <input type="text" class="quantidade__valor" [value]="item.quantidade" readonly aria-label="Quantidade">
-    <button type="button" class="quantidade__botao" (click)="quantidadeAlterada.emit(1)" [attr.aria-label]="'Aumentar quantidade de ' + item.nome">+</button>
+    <button type="button" class="quantidade__botao" (click)="quantidadeAlterada.emit(-1)" [attr.aria-label]="'Diminuir quantidade de ' + item().nome">&minus;</button>
+    <input type="text" class="quantidade__valor" [value]="item().quantidade" readonly aria-label="Quantidade">
+    <button type="button" class="quantidade__botao" (click)="quantidadeAlterada.emit(1)" [attr.aria-label]="'Aumentar quantidade de ' + item().nome">+</button>
   </div>
 </div>
 <div class="item__valores">
-  <p class="item__unitario">Unitário: {{ formatarMoeda(item.preco) }}</p>
-  <p class="item__total">{{ formatarMoeda(item.preco * item.quantidade) }}</p>
+  <p class="item__unitario">Unitário: {{ item().preco | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
+  <p class="item__total">{{ item().preco * item().quantidade | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</p>
   <div class="item__acoes">
-    <button type="button" class="link">&#9825; Salvar para depois</button>
-    <button type="button" class="link" (click)="remover.emit()">&#128465; Remover</button>
+    <button type="button" class="link" (click)="remover.emit()">Remover</button>
   </div>
 </div>

@@ -1,22 +1,14 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-resumo-pedido',
-  standalone: true,
+  imports: [CurrencyPipe],
   templateUrl: './resumo-pedido.html',
-  styleUrl: './resumo-pedido.css'
+  styleUrl: './resumo-pedido.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ResumoPedidoComponent {
-  @Input({ required: true }) quantidadeItens!: number;
-  @Input({ required: true }) subtotal!: number;
-  @Input({ required: true }) frete!: number;
-  @Input({ required: true }) desconto!: number;
-  @Input({ required: true }) cupomAplicado!: string;
-  @Input({ required: true }) percentualCupom!: number;
-  @Input({ required: true }) total!: number;
-  @Input({ required: true }) totalPix!: number;
-
-  formatarMoeda(valor: number): string {
-    return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-  }
+  readonly quantidadeItens = input.required<number>();
+  readonly total = input.required<number>();
 }

@@ -16,49 +16,32 @@
   </header>
 
   <div class="grade">
-    <div class="coluna-principal">
-      <section class="cartao carrinho">
-        <header class="carrinho__cabecalho">
-          <h2 class="cartao__titulo">Seu Carrinho <span class="carrinho__contador">({{ itens.length }} {{ itens.length === 1 ? 'item' : 'itens' }})</span></h2>
-          <div class="carrinho__links">
-            <a href="#" class="link">Continuar Comprando</a>
-            <button type="button" class="link link--perigo" (click)="esvaziarCarrinho()" [hidden]="itens.length === 0">&#8635; Esvaziar carrinho</button>
-          </div>
-        </header>
+    <section class="cartao carrinho">
+      <header class="carrinho__cabecalho">
+        <h2 class="cartao__titulo">Seu Carrinho <span class="carrinho__contador">({{ itens.length }} {{ itens.length === 1 ? 'item' : 'itens' }})</span></h2>
+        @if (itens.length > 0) {
+          <button type="button" class="link link--perigo" (click)="esvaziarCarrinho()">Esvaziar carrinho</button>
+        }
+      </header>
 
-        <ul class="lista-itens">
-          <li app-item-carrinho *ngFor="let item of itens"
+      <ul class="lista-itens">
+        @for (item of itens; track item.id) {
+          <li app-item-carrinho
               [item]="item"
               (quantidadeAlterada)="alterarQuantidade(item, $event)"
               (remover)="removerItem(item)">
           </li>
-        </ul>
+        }
+      </ul>
 
-        <p class="carrinho__vazio" *ngIf="itens.length === 0">Seu carrinho está vazio. <a href="#" class="link">Voltar ao catálogo</a></p>
-      </section>
-
-      <div class="grade-utilidades">
-        <app-frete [cep]="cep" [frete]="frete" (cepChange)="cep = $event" (freteChange)="frete = $event"></app-frete>
-        <app-cupom
-          [codigoCupom]="codigoCupom"
-          [mensagemCupom]="mensagemCupom"
-          [cupomValido]="cupomValido"
-          (codigoCupomChange)="codigoCupom = $event"
-          (aplicar)="aplicarCupom()"
-          (remover)="removerCupom()">
-        </app-cupom>
-      </div>
-    </div>
+      @if (itens.length === 0) {
+        <p class="carrinho__vazio">Seu carrinho está vazio.</p>
+      }
+    </section>
 
     <app-resumo-pedido
-      [quantidadeItens]="itens.length"
-      [subtotal]="subtotal"
-      [frete]="frete"
-      [desconto]="desconto"
-      [cupomAplicado]="cupomAplicado"
-      [percentualCupom]="percentualCupom"
-      [total]="total"
-      [totalPix]="totalPix">
+      [quantidadeItens]="quantidadeTotal"
+      [total]="total">
     </app-resumo-pedido>
   </div>
 </main>

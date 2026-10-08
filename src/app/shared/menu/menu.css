@@ -41,6 +41,18 @@ button {
   font-weight: 700;
   letter-spacing: 1px;
 }
+
+.menu__icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+}
+
+.menu__link--carrinho {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
 /* ========== */
 
 /* Navegação e ações do cabeçalho */
@@ -87,13 +99,6 @@ button {
 .botao--escuro {
   background: var(--cor-escura);
   color: #fff;
-}
-/* ========== */
-
-/* Foco acessível nos links */
-:where(a):focus-visible {
-  outline: 2px solid var(--cor-madeira);
-  outline-offset: 3px;
 }
 /* ========== */
 

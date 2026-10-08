@@ -6,7 +6,11 @@
     </a>
 
     <nav class="menu" aria-label="Navegação principal">
-      <a routerLink="/carrinho" routerLinkActive="menu__link--ativo" class="menu__link">Carrinho</a>
+
+      <a routerLink="/carrinho" routerLinkActive="menu__link--ativo" class="menu__link menu__link--carrinho">
+        <img [src]="cart" alt="" class="menu__icon">
+        <span>Carrinho</span>
+      </a>
       <a routerLink="/manutencao-produtos" routerLinkActive="menu__link--ativo" class="menu__link">Painel Admin</a>
     </nav>
 

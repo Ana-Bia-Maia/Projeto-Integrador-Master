@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Produto } from '../../../models/produto.model';
+import { Produto } from '../../../../models/produto.model';
 
 @Component({
   selector: 'app-tabela-produtos',

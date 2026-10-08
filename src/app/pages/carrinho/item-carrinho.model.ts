@@ -1,10 +1,5 @@
-export interface ItemCarrinho {
-  id: number;
-  nome: string;
-  especificacao: string;
-  referencia: string;
-  preco: number;
+import { Produto } from '../../models/produto.model';
+
+export type ItemCarrinho = Produto & {
   quantidade: number;
-  madeira: string;
-  imagem?: string;
-}
+};

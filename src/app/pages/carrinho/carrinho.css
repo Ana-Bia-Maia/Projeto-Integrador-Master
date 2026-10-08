@@ -91,10 +91,6 @@ button {
   gap: 24px;
   align-items: start;
 }
-.coluna-principal {
-  display: grid;
-  gap: 24px;
-}
 .cartao {
   padding: 24px;
   box-shadow: var(--sombra-suave);
@@ -130,18 +126,11 @@ button {
   color: var(--cor-texto-suave);
   text-align: center;
 }
-.grade-utilidades {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  align-items: start;
-}
 /* ========== */
 
 /* Ajustes do carrinho para telas menores */
 @media (max-width: 900px) {
-  .grade,
-  .grade-utilidades {
+  .grade {
     grid-template-columns: 1fr;
   }
 }
