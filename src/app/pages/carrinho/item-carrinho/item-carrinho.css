@@ -13,9 +13,8 @@
 }
 /* ========== */
 
-/* Foto e etiqueta do produto */
+/* Foto do produto */
 .item__imagem {
-  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,16 +29,6 @@
   object-fit: cover;
 }
 
-.item__etiqueta {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  padding: 2px 7px;
-  border-radius: 3px;
-  background: rgba(29, 19, 13, 0.75);
-  color: #fff;
-  font-size: 10px;
-}
 /* ========== */
 
 /* Nome e detalhes do produto */
@@ -51,8 +40,8 @@
   line-height: 1.35;
 }
 
-.item__especificacao,
-.item__referencia {
+.item__categoria,
+.item__sku {
   margin-top: 6px;
   color: var(--cor-texto-suave);
   font-size: 12px;
@@ -81,7 +70,6 @@
 
 .item__acoes {
   display: flex;
-  gap: 14px;
   margin-top: 16px;
 }
 
